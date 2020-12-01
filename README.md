@@ -1,5 +1,5 @@
 # js30SlamDunk
-Coding along with Wes Bos' JS course
+Coding along with [Wes Bos' JS course](https://github.com/wesbos/beginner-javascript)
 
 ### MODULE#1
 #### Variables
@@ -18,3 +18,15 @@ Coding along with Wes Bos' JS course
   - **U**ndefined
     - Value is **accidentally** not set or not yet set
   - **S**ymbol
+
+### MODULE#2
+
+#### Functions
+- Functions are defined and called
+- Parameter vs. Argument
+  - **parameters** are **placeholders**
+  - **arguments** are **actual** values
+- Function vs. Method
+  - A **method** is a **function** that lives inside an **object**
+- Callback function
+  - A function being passed in to another function, and is called/invoked at a later time
