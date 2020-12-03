@@ -30,3 +30,8 @@ Coding along with [Wes Bos' JS course](https://github.com/wesbos/beginner-javasc
   - A **method** is a **function** that lives inside an **object**
 - Callback function
   - A function being passed in to another function, and is called/invoked at a later time
+
+### MODULE#3
+
+#### Closures
+- The ability for a child/inner function to access a parent-level scope from a child-level scope even after the parent function has been terminated/closed.
