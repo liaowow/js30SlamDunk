@@ -19,7 +19,17 @@ people.forEach((person) => {
 // Scope
 
 // Network Requests
-
+async function fetchDadJoke() {
+  const response = await fetch('https://icanhazdadjoke.com', {
+    headers: {
+      Accept: 'text/plain',
+    },
+  });
+  const joke = await response.text();
+  console.log(joke);
+  return joke;
+}
+fetchDadJoke();
 // Break On Attribute
 
 // Some Setup Code
