@@ -35,3 +35,8 @@ Coding along with [Wes Bos' JS course](https://github.com/wesbos/beginner-javasc
 
 #### Closures
 - The ability for a child/inner function to access a parent-level scope from a child-level scope even after the parent function has been terminated/closed.
+
+### MODULE#4
+
+#### The DOM
+- Adding text node via built-in method: [`element.insertAdjacentText()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentText)
