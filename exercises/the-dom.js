@@ -8,8 +8,16 @@
 // console.log(heading.innerHTML)
 // console.log(heading.outerHTML)
 
-const pizzaList = document.querySelector('.pizza')
-console.log(pizzaList.textContent)
-// pizzaList.textContent += '🍕'
-pizzaList.insertAdjacentText('beforeend', '🍕')
-pizzaList.insertAdjacentText('afterbegin', '🍕')
+// const pizzaList = document.querySelector('.pizza')
+// console.log(pizzaList.textContent)
+// // pizzaList.textContent += '🍕'
+// pizzaList.insertAdjacentText('beforeend', '🍕')
+// pizzaList.insertAdjacentText('afterbegin', '🍕')
+
+const pic = document.querySelector('.nice')
+
+function toggleRound() {
+  pic.classList.toggle('round')
+}
+
+pic.addEventListener('click', toggleRound)
