@@ -20,4 +20,14 @@ function toggleRound() {
   pic.classList.toggle('round')
 }
 
-pic.addEventListener('click', toggleRound)
+// pic.addEventListener('click', toggleRound)
+
+// pic.alt = "random unsplash pics"
+// pic.addEventListener('load', function() { console.log(pic.naturalWidth) })
+// console.log(pic.getAttribute('alt'))
+
+const custom = document.querySelector('.custom')
+// console.log(custom.dataset)
+custom.addEventListener('click', function() {
+  alert(`Welcome, ${custom.dataset.first} ${custom.dataset.last}!`)
+})
