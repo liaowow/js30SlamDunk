@@ -39,6 +39,6 @@ Coding along with [Wes Bos' JS course](https://github.com/wesbos/beginner-javasc
 ### MODULE#4
 
 #### The DOM
-- Adding text node via built-in method: [`element.insertAdjacentText()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentText)
+- Adding text node via built-in method: [`Element.insertAdjacentText()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentText)
 - Adding sister elements: [`Element.insertAdjacentElement()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentElement)
-- Duplicating an element: [`Noce.cloneNode()`](https://developer.mozilla.org/en-US/docs/Web/API/Node/cloneNode)
+- Duplicating an element: [`Node.cloneNode()`](https://developer.mozilla.org/en-US/docs/Web/API/Node/cloneNode)
