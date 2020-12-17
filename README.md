@@ -42,3 +42,4 @@ Coding along with [Wes Bos' JS course](https://github.com/wesbos/beginner-javasc
 - Adding text node via built-in method: [`Element.insertAdjacentText()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentText)
 - Adding sister elements: [`Element.insertAdjacentElement()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentElement)
 - Duplicating an element: [`Node.cloneNode()`](https://developer.mozilla.org/en-US/docs/Web/API/Node/cloneNode)
+- Turning a string into a DOM element: [`Document.createRange()`](https://developer.mozilla.org/en-US/docs/Web/API/Document/createRange) and [`Range.createContextualFragment()`](https://developer.mozilla.org/en-US/docs/Web/API/Range/createContextualFragment)
