@@ -1,6 +1,6 @@
 const liao = document.querySelector('.liao');
 liao.addEventListener('click', function (event) {
-  const shouldChangePage = confirm(
+  const shouldChangePage = window.confirm(
     'This site may be malicious. Do you wish to proceed?'
   );
   if (!shouldChangePage) {
@@ -10,7 +10,7 @@ liao.addEventListener('click', function (event) {
 });
 
 const signUpForm = document.querySelector('[name="signup"]');
-signUpForm.addEventListener('submit', function(event) {
+signUpForm.addEventListener('submit', function (event) {
   // console.log(event.currentTarget.agree.checked);
   const name = event.currentTarget.name.value;
   if (name.includes('Chad')) {
