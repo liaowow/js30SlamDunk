@@ -39,3 +39,6 @@ Coding along with [Wes Bos' JS course](https://github.com/wesbos/beginner-javasc
 #### `event.target` vs. `event.currentTarget`
 - `event.target` is the specific element that actually got clicked
 - `event.currentTarget` is the element that fires the event listener, i.e. what the event listener is listening/attached to
+
+#### VSCode Tools/Extensions
+- Text Pastry: Select multiple fields and add numbers from 1 to X. Shortcut key: `cmd+shift+p`
