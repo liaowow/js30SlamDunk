@@ -31,7 +31,9 @@
     let rotate = 0;
     function handleKeyDown(event) {
       // eslint-disable-next-line no-useless-return
-      if (!event.key.includes('Arrow')) { return; }
+      if (!event.key.includes('Arrow')) {
+        return;
+      }
       switch (event.key) {
         case 'ArrowUp':
           y -= 1;
@@ -54,12 +56,15 @@
         default:
           break;
       }
-      turtle.setAttribute('style', `
-        --x: ${x * speed}px; 
-        --y: ${y * speed}px;
-        --rotateX: ${flipped ? '180deg' : '0'};
-        --rotate: ${rotate}deg;
-      `);
+      turtle.setAttribute(
+        'style',
+        `
+            --x: ${x * speed}px; 
+            --y: ${y * speed}px;
+            --rotateX: ${flipped ? '180deg' : '0'};
+            --rotate: ${rotate}deg;
+        `
+      );
     }
     window.addEventListener('keydown', handleKeyDown);
   </script>
