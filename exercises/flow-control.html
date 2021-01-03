@@ -48,7 +48,7 @@
     const name = 'wes';
     const last = 'bos';
 
-    if (name === 'scott' || (name === 'wes' && last == 'bos')) {
+    if (name === 'scott' || (name === 'wes' && last === 'bos')) {
       console.log('Coool Name!');
     }
 
@@ -57,8 +57,8 @@
       console.log('SUPER COOL AWESOME NAME');
     }
 
-    function nameIsAwesome(name) {
-      return 'awesome'.includes(name);
+    function nameIsAwesome(theName) {
+      return 'awesome'.includes(theName);
     }
 
     if (nameIsAwesome('wes')) {
@@ -73,7 +73,7 @@
       console.log('you dont have a dog');
     }
 
-    let score = {};
+    const score = {};
 
     if (score) {
       console.log('There is a score already');
@@ -81,21 +81,21 @@
       console.log('No score yet');
     }
 
-const values = [
-  [],
-  {},
-  -10,
-  1,
-  0,
-  '',
-  'full string',
-  ' ',
-  undefined,
-  NaN,
-  null,
-  '0️⃣',
-  '💩',
-];
+    const values = [
+      [],
+      {},
+      -10,
+      1,
+      0,
+      '',
+      'full string',
+      ' ',
+      undefined,
+      NaN,
+      null,
+      '0️⃣',
+      '💩',
+    ];
 
     console.group('truthy or falsy values');
     values.forEach((value) => {
@@ -127,7 +127,7 @@ const values = [
     // 1. Condition
     // 2. what to do if true
     // 3. what to do if false
-    const word = count === 1 ? 'item' : 'items';
+    // const word = count === 1 ? 'item' : 'items';
     const sentence = `You have ${count} item${count === 1 ? '' : 's'} in your cart`;
     console.log(sentence);
 
@@ -157,9 +157,12 @@ const values = [
       console.log('Some checks failed');
     }
     // isAdmin ? showAdminBar() : null;
+    // eslint-disable-next-line no-unused-expressions
     isAdmin && showAdminBar();
 
-    if (isAdmin) { showAdminBar(); }
+    if (isAdmin) {
+      showAdminBar();
+    }
   </script>
 </body>
 

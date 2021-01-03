@@ -42,3 +42,7 @@ Coding along with [Wes Bos' JS course](https://github.com/wesbos/beginner-javasc
 
 #### VSCode Tools/Extensions
 - Text Pastry: Select multiple fields and add numbers from 1 to X. Shortcut key: `cmd+shift+p`
+
+#### Maps vs. Objects
+- Use `Maps` when you need to maintain the order of the items 
+- `Maps` are for storing data, so you cannot have a function inside of a Map
