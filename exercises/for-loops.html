@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>For Loops</title>
+</head>
+
+<body>
+  <script>
+    /* eslint-disable */
+    const numbers = [2, 34, 3, 23, 42, 3, 1, 65, 364, 5, 645, 6];
+
+    const name = 'Wes Bos 👀';
+
+    const covid = {
+      year: 2020,
+      status: 'active',
+      horrible: true
+    }
+
+    // For
+    for (let i = 0; i <= 10; i++) {
+      console.log(i)
+    }
+
+    // For of
+    for (const letter of name) {
+      console.log(letter)
+    }
+
+    // For in
+    for (const prop in covid) {
+      console.log(prop)
+    }
+
+    const humanBasicStats = {
+      feet: 2,
+      head: 1,
+      eyes: 2
+    }
+
+    function Human(name) {
+      this.name = name;
+    }
+
+    Human.prototype = humanBasicStats;
+    const adam = new Human('adam');
+    console.log(Object.entries(adam));
+
+    for (const prop in adam) {
+      console.log(prop)
+    }
+
+    // While Loop
+    let cool = true;
+    let i = 0
+    while (cool) {
+      console.log('running')
+      i++;
+      if (i >= 100) {
+        cool = false;
+      }
+    }
+  </script>
+</body>
+
+</html>
