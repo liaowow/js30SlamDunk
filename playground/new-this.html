@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>New, This, Prototypes and Classes</title>
+  <link rel="stylesheet" href="../base.css">
+</head>
+
+<body>
+  <button class="one">Click Me!</button>
+  <button class="two">Click Me too!</button>
+  <script>
+    /* review `new` keyword */
+    // const myDate = new Date('October 12, 2025');
+    // console.log(myDate);
+    
+    // function Pizza() {
+    //   console.log('making a 🍕');
+    // }
+    
+    // const pepperoniPizza = new Pizza();
+    // console.log(pepperoniPizza.constructor);
+    // console.log(pepperoniPizza instanceof Pizza);
+
+    /* review `this` keyword */
+    const btn1 = document.querySelector('.one');
+    const btn2 = document.querySelector('.two');
+
+    function whichBtn() {
+      console.log('outside', this);
+    
+      setTimeout(() => {
+        console.log('inside setTimeout', this);
+        this.textContent = 'You clicked me!';
+      }, 1000);
+    }
+
+    // const whichBtnArrow = () => {
+    //   console.log(this);
+    // };
+
+    btn1.addEventListener('click', whichBtn);
+    btn2.addEventListener('click', whichBtn);
+  </script>
+</body>
+
+</html>

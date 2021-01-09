@@ -43,6 +43,9 @@ Coding along with [Wes Bos' JS course](https://github.com/wesbos/beginner-javasc
 #### Maps vs. Objects
 - Use `Maps` when you need to maintain the order of the items 
 - `Maps` are for storing data, so you cannot have a function inside of a Map
+
+#### `this` Keyword
+- `this` refers to the instance of an object that a function is bound
 #### VSCode Tools/Extensions
 - Text Pastry: Select multiple fields and add numbers from 1 to X. Shortcut key: `cmd+shift+p`
 
