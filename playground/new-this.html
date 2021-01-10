@@ -41,8 +41,44 @@
     //   console.log(this);
     // };
 
-    btn1.addEventListener('click', whichBtn);
-    btn2.addEventListener('click', whichBtn);
+    // btn1.addEventListener('click', whichBtn);
+    // btn2.addEventListener('click', whichBtn);
+
+    function Pizza(toppings = [], customer) {
+      console.log('Making a pizza');
+      // save the toppings that were passed in, to this instance of pizza
+      this.toppings = toppings;
+      this.customer = customer;
+      this.id = Math.floor(Math.random() * 16777215).toString(16);
+      this.slices = 10;
+      // this.eat = function () {
+      //   if (this.slices > 0) {
+      //     this.slices -= 1;
+      //     console.log(`you have ${this.slices} slices left`);
+      //   } else {
+      //     console.log(`oops, no more pizza!`);
+      //   }
+      // };
+    }
+
+    Pizza.prototype.eat = function () {
+      if (this.slices > 0) {
+        this.slices -= 1;
+        console.log(`you have ${this.slices} slices left`);
+      } else {
+        console.log(`oops, no more pizza!`);
+      }
+    };
+
+    Pizza.prototype.describe = function () {
+      return `This pizza is for ${this.customer}`;
+    }
+
+    const canadianPizza = new Pizza(
+      ['pepperoni', 'mushrooms', 'onion'],
+      'Kait Bos'
+    );
+    const pepperoniPizza = new Pizza(['pepperoni'], 'Wes Bos');
   </script>
 </body>
 
