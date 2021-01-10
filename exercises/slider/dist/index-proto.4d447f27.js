@@ -117,79 +117,84 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"node_modules/parcel/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
+})({"index-proto.js":[function(require,module,exports) {
+function Slider(slider) {
+  var _this = this;
 
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
+  if (!(slider instanceof Element)) {
+    throw new Error('No slider passed in');
   }
 
-  return bundleURL;
+  this.slides = slider.querySelector('.slides');
+  this.slider = slider;
+  var prevBtn = slider.querySelector('.goToPrev');
+  var nextBtn = slider.querySelector('.goToNext');
+  this.startSlider();
+  this.applyClasses();
+  prevBtn.addEventListener('click', function () {
+    return _this.move('back');
+  });
+  nextBtn.addEventListener('click', function () {
+    return _this.move();
+  });
 }
 
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+Slider.prototype.startSlider = function () {
+  this.current = this.slider.querySelector('.current') || this.slides.firstElementChild;
+  this.prev = this.current.previousElementSibling || this.slides.lastElementChild;
+  this.next = this.current.nextElementSibling || this.slides.firstElementChild;
+};
 
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
+Slider.prototype.applyClasses = function () {
+  this.current.classList.add('current');
+  this.prev.classList.add('prev');
+  this.next.classList.add('next');
+};
+
+Slider.prototype.move = function (direction) {
+  // 1. strip all classes off the current slides
+  var classesToRemove = ['prev', 'current', 'next'];
+  [this.prev, this.current, this.next].forEach(function (el) {
+    var _el$classList;
+
+    return (_el$classList = el.classList).remove.apply(_el$classList, classesToRemove);
+  }); // 2. detect direction, reassign prev/current/next variables
+
+  if (direction === 'back') {
+    // make a new array of new values, and destructure them into the prev/current/next variables
+    var _ref = [// get the prev slide, if there's none, get the last slide from the slider
+    this.prev.previousElementSibling || this.slides.lastElementChild, this.prev, this.current];
+    this.prev = _ref[0];
+    this.current = _ref[1];
+    this.next = _ref[2];
+  } else {
+    var _ref2 = [this.current, this.next, this.next.nextElementSibling || this.slides.firstElementChild];
+    this.prev = _ref2[0];
+    this.current = _ref2[1];
+    this.next = _ref2[2];
+  } // 3. apply new set of classes to the slides
+
+
+  this.applyClasses();
+};
+
+var mySlider = new Slider(document.querySelector('.slider'));
+var dogSlider = new Slider(document.querySelector('.dog-slider'));
+console.log(mySlider, dogSlider);
+window.mySlider = mySlider;
+window.dogSlider = dogSlider;
+window.addEventListener('keyup', function (e) {
+  if (e.key === 'ArrowRight') {
+    mySlider.move();
+    dogSlider.move();
   }
 
-  return '/';
-}
-
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
-}
-
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"node_modules/parcel/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-
-function updateLink(link) {
-  var newLink = link.cloneNode();
-
-  newLink.onload = function () {
-    link.remove();
-  };
-
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-
-var cssTimeout = null;
-
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
+  if (e.key === 'ArrowLeft') {
+    mySlider.move('back');
+    dogSlider.move('back');
   }
-
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
-
-    cssTimeout = null;
-  }, 50);
-}
-
-module.exports = reloadCSS;
-},{"./bundle-url":"node_modules/parcel/src/builtins/bundle-url.js"}],"style.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"node_modules/parcel/src/builtins/css-loader.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+});
+},{}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -393,5 +398,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel/src/builtins/hmr-runtime.js"], null)
-//# sourceMappingURL=/style.97fcb138.js.map
+},{}]},{},["node_modules/parcel/src/builtins/hmr-runtime.js","index-proto.js"], null)
+//# sourceMappingURL=/index-proto.4d447f27.js.map
