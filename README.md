@@ -44,8 +44,11 @@ Coding along with [Wes Bos' JS course](https://github.com/wesbos/beginner-javasc
 - Use `Maps` when you need to maintain the order of the items 
 - `Maps` are for storing data, so you cannot have a function inside of a Map
 
-#### `this` Keyword
+#### `this` Keyword and `call`, `bind`, `apply`
 - `this` refers to the instance of an object that a function is bound
+- `call`, `bind` and `apply` will change the scope of `this` keyword inside of a function/method
+  - Use `bind` if you need a function to be called later
+  - Use `call` or `apply` if you need to call the function immediately (`apply` accepts an array as second argument)
 #### VSCode Tools/Extensions
 - Text Pastry: Select multiple fields and add numbers from 1 to X. Shortcut key: `cmd+shift+p`
 

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Bind Call and Apply!</title>
+  <link rel="stylesheet" href="../base.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <p>Heyyy</p>
+  </div>
+  <p>Over here!</p>
+  <button>Click here!</button>
+  <script>
+    const person = {
+      name: 'Annie',
+      sayHi() {
+        console.log(this);
+        return `Hey ${this.name}`;
+      },
+    };
+    const dog = { name: 'Benji' };
+    const sayHiHere = person.sayHi.bind(dog);
+
+    // querySelector example: When $ function runs, use document as the `this` value
+    const $ = document.querySelector.bind(document);
+    const lookFor = document.querySelectorAll.bind(document);
+
+    // call vs. apply
+    const bill = {
+      total: 100,
+      calculate(taxRate) {
+        return this.total + (this.total * taxRate);
+      },
+      describe(mealType, drinkType, taxRate) {
+        return `Your meal of ${mealType} with a drink of ${drinkType} was $${this.calculate(taxRate)}`;
+      },
+    };
+
+    // const total = bill.calculate(0.15);
+    const calBind = bill.calculate.bind({ total: 500 }, 0.06);
+    const calCall = bill.calculate.call({ total: 500 }, 0.06);
+    const calApply = bill.calculate.call({ total: 500 }, [0.06]);
+    console.log(calBind());
+    console.log(calCall);
+    console.log(calApply);
+
+    const myMeal = bill.describe.call(bill, 'pizza', 'beer', 0.13);
+    const myMealApply = bill.describe.apply(bill, ['pizza', 'beer', 0.13]);
+    console.log(myMeal);
+    console.log(myMealApply);
+  </script>
+</body>
+
+</html>
