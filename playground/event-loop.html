@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Event Loop</title>
+  <link rel="stylesheet" href="../base.css">
+</head>
+
+<body>
+  <style>
+    .go {
+      margin: 5rem;
+      background: white;
+      padding: 5rem;
+      width: 25rem;
+    }
+  </style>
+  <div class="go">
+    Click me
+  </div>
+  <script>
+    // console.log('start');
+    // setTimeout(function () {
+    //   console.log('running');
+    // }, 2000);
+    // console.log('end');
+    const go = document.querySelector('.go');
+    go.addEventListener('click', function (e) {
+      const el = e.currentTarget;
+      el.textContent = `Go`;
+      console.log(el);
+    });
+    
+  </script>
+</body>
+
+</html>

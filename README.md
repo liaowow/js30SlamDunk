@@ -55,3 +55,4 @@ Coding along with [Wes Bos' JS course](https://github.com/wesbos/beginner-javasc
 #### Resources
 - Regex reference: [regexr.com](https://regexr.com/)
 - Package manager 101: [MDN Package management basics](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Understanding_client-side_tools/Package_management)
+- How event loops work: [What the heck is event loop anyway?](https://www.youtube.com/watch?v=8aGhZQkoFbQ)
