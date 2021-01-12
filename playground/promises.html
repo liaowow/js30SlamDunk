@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Promises</title>
+  <link rel="stylesheet" href="../base.css">
+</head>
+
+<body>
+  <script>
+    function makePizza(toppings = []) {
+      const pizzaPromise = new Promise(function (resolve, reject) {
+        const timeToBake = 500 + (toppings.length * 200);
+        // wait 1 sec for the pizza to cook
+        setTimeout(function () {
+          // when we are ready, we can resolve this promise
+          resolve(`Here's your 🍕 with toppings ${toppings.join(' ')}`);
+          // when something went wrong, we can reject this promise
+        }, timeToBake);
+      });
+      return pizzaPromise;
+    }
+
+    makePizza(['cheese', 'pepperoni', 'mushroom'])
+      .then(function (pizza) {
+        console.log(pizza);
+        return makePizza(['ham', 'feta']);
+      })
+      .then(function (pizza) {
+        console.log(pizza);
+        return makePizza(['spinach', 'sausages']);
+      })
+      .then(function (pizza) {
+        console.log(pizza);
+        return makePizza();
+      })
+      .then(function (pizza) {
+        console.log(pizza);
+        return makePizza(['a', 'b', 'c', 'a', 'b', 'c', 'a', 'b', 'c']);
+      })
+      .then((pizza) => {
+        console.log(`And finally: ${pizza}`);
+      });
+
+    // run concurrently
+    const pizzaPromise1 = makePizza(['ham', 'feta']);
+    const pizzaPromise2 = makePizza(['cheese', 'pepperoni', 'mushroom']);
+    const pizzaPromise3 = makePizza(['spinach', 'sausages']);
+
+    const megaPromise = Promise.all([pizzaPromise1, pizzaPromise2, pizzaPromise3]);
+    megaPromise.then((pizzas) => {
+      const [one, two, three] = pizzas;
+      console.log(one, two, three);
+    });
+    // wait for the first one to finish and render it
+    const firstPizzaPromise = Promise.race([pizzaPromise1, pizzaPromise2, pizzaPromise3]);
+    firstPizzaPromise.then((pizza) => {
+      console.log(`You must be hungry! ${pizza}`);
+    });
+  </script>
+</body>
+
+</html>
