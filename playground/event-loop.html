@@ -15,6 +15,21 @@
       background: white;
       padding: 5rem;
       width: 25rem;
+      height: 25rem;
+      transition: all 0.2s;
+    }
+    .go.circle {
+      border-radius: 50%;
+    }
+    .go.red {
+      background-color: crimson;
+    }
+    .go.purple {
+      background-color:darkslateblue;
+      color: white;
+    }
+    .go.fadeout {
+      opacity: 0;
     }
   </style>
   <div class="go">
@@ -31,8 +46,23 @@
       const el = e.currentTarget;
       el.textContent = `Go`;
       console.log(el);
+      setTimeout(function () {
+        el.classList.add('circle');
+        setTimeout(function () {
+          el.classList.add('red');
+          setTimeout(function () {
+            el.classList.remove('circle');
+            setTimeout(function () {
+              el.classList.remove('red');
+              el.classList.add('purple');
+              setTimeout(function () {
+                el.classList.add('fadeout');
+              }, 500);
+            }, 300);
+          }, 250);
+        }, 500);
+      }, 2000);
     });
-    
   </script>
 </body>
 
