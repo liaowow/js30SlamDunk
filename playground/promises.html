@@ -12,6 +12,10 @@
   <script>
     function makePizza(toppings = []) {
       const pizzaPromise = new Promise(function (resolve, reject) {
+        // reject if people try with pineapple
+        if (toppings.includes('pineapple')) {
+          reject(new Error('Seriously, a 🍍?!'));
+        }
         const timeToBake = 500 + (toppings.length * 200);
         // wait 1 sec for the pizza to cook
         setTimeout(function () {
@@ -58,6 +62,27 @@
     const firstPizzaPromise = Promise.race([pizzaPromise1, pizzaPromise2, pizzaPromise3]);
     firstPizzaPromise.then((pizza) => {
       console.log(`You must be hungry! ${pizza}`);
+    });
+
+    function handleError(err) {
+      console.log('oh noooo!');
+      console.log(err);
+    }
+
+    makePizza(['cheese', 'pineapple'])
+      .then((pizza) => {
+        console.log(pizza);
+      })
+      .catch((err) => {
+        handleError(err);
+      });
+
+    const p1 = makePizza(['pep']);
+    const p2 = makePizza(['pineapple']);
+
+    const dinnerPromise = Promise.allSettled([p1, p2]);
+    dinnerPromise.then((results) => {
+      console.log(results);
     });
   </script>
 </body>
