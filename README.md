@@ -54,6 +54,7 @@ Coding along with [Wes Bos' JS course](https://github.com/wesbos/beginner-javasc
 - [`Promise.all()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all): will resolve when all of the input's promises have resolved, but will reject when encountering first rejection message / error
 - [`Promise.allSettled()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled): returns a promise that resolves after **all** of the given promises have either fulfilled or rejected, with an array of objects that each describes the outcome of each promise
 - [`Promise.race()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race): returns a promise that fulfills or rejects as soon as one of the promises in an iterable fulfills or rejects, with the value or reason from that promise
+- `async` functions will always return a `Promise` themselves
 
 #### VSCode Tools/Extensions
 - Text Pastry: Select multiple fields and add numbers from 1 to X. Shortcut key: `cmd+shift+p`
