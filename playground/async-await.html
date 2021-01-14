@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Async Await</title>
+  <link rel="stylesheet" href="../base.css">
+</head>
+
+<body>
+  <script>
+    function wait(ms = 0) {
+      return new Promise((resolve) => {
+        setTimeout(resolve, ms);
+      });
+    }
+
+    // async function go() {
+    //   console.log('starting');
+    //   await wait(2000);
+    //   console.log('ending');
+    //   await wait(2000);
+    //   console.log('end again');
+    // }
+
+    function makePizza(toppings = []) {
+      const pizzaPromise = new Promise(function (resolve, reject) {
+        // reject if people try with pineapple
+        if (toppings.includes('pineapple')) {
+          reject(new Error('Seriously, a 🍍?!'));
+        }
+        const timeToBake = 500 + (toppings.length * 200);
+        // wait 1 sec for the pizza to cook
+        setTimeout(function () {
+          // when we are ready, we can resolve this promise
+          resolve(`Here's your 🍕 with toppings ${toppings.join(' ')}`);
+          // when something went wrong, we can reject this promise
+        }, timeToBake);
+      });
+      return pizzaPromise;
+    }
+
+    async function makeDinner() {
+      const pizzaPromise1 = makePizza(['fruits', 'veggies']);
+      const pizzaPromise2 = makePizza(['meat', 'meat', 'meat']);
+      const [veggie, meaty] = await Promise.all([pizzaPromise1, pizzaPromise2]);
+      console.log(veggie, meaty);
+    }
+
+    makeDinner();
+  </script>
+</body>
+
+</html>
