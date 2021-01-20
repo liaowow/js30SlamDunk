@@ -56,6 +56,18 @@ Coding along with [Wes Bos' JS course](https://github.com/wesbos/beginner-javasc
 - [`Promise.race()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/race): returns a promise that fulfills or rejects as soon as one of the promises in an iterable fulfills or rejects, with the value or reason from that promise
 - `async` functions will always return a `Promise` themselves
 
+#### Modules
+- **named** exports vs. **default** exports
+  - named: 
+    - need to type the names inside `{ }`
+    - you have to import using the exact names defined in the export file
+    - you can rename it using `as`
+  - default: 
+    - no need to put the names in `{ }`
+    - you can import using whatever names you want
+  - Which one?
+    - If your module only does one thing, use **default** 
+
 #### VSCode Tools/Extensions
 - Text Pastry: Select multiple fields and add numbers from 1 to X. Shortcut key: `cmd+shift+p`
 
