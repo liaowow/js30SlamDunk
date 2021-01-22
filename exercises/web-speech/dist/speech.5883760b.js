@@ -302,13 +302,18 @@ function isDark(colorName) {
 
 const colorsByLength = Object.keys(colors).sort((a, b) => a.length - b.length);
 exports.colorsByLength = colorsByLength;
-console.log(colorsByLength);
 },{}],"speech.js":[function(require,module,exports) {
 "use strict";
 
 var _handlers = require("./handlers.js");
 
 var _colors = require("./colors.js");
+
+const colorsEl = document.querySelector('.colors');
+
+function displayColors(colors) {
+  return colors.map(color => `<span class="color ${(0, _colors.isDark)(color) ? 'dark' : ''}" style="background: ${color}">${color}</span>`).join('');
+}
 
 window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
@@ -326,9 +331,10 @@ function start() {
   recognition.interimResults = true;
   recognition.onresult = _handlers.handleResult;
   recognition.start();
-}
+} // start();
 
-start();
+
+colorsEl.innerHTML = displayColors(_colors.colorsByLength);
 },{"./handlers.js":"handlers.js","./colors.js":"colors.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -357,7 +363,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59191" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59226" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
