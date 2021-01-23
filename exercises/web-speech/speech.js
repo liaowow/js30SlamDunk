@@ -7,7 +7,7 @@ function displayColors(colors) {
   return colors
     .map(
       (color) =>
-        `<span class="color ${
+        `<span class="color ${color} ${
           isDark(color) ? 'dark' : ''
         }" style="background: ${color}">${color}</span>`
     )
@@ -31,5 +31,5 @@ function start() {
   recognition.start();
 }
 
-// start();
+start();
 colorsEl.innerHTML = displayColors(colorsByLength);
