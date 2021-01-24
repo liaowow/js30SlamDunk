@@ -5,6 +5,7 @@ const ctx = canvas.getContext('2d');
 canvas.width = WIDTH;
 canvas.height = HEIGHT;
 let analyzer;
+let bufferLength;
 
 // get audio
 function handleError(err) {
@@ -21,17 +22,29 @@ async function getAudio() {
   source.connect(analyzer);
   // how much data should we collect
   analyzer.fftSize = 2 ** 10;
+  // how many pieces of data are there
+  bufferLength = analyzer.frequencyBinCount;
   // pull the data off the audio
-  const timeData = new Uint8Array(analyzer.frequencyBinCount);
-  const frequencyData = new Uint8Array(analyzer.frequencyBinCount);
+  const timeData = new Uint8Array(bufferLength);
+  const frequencyData = new Uint8Array(bufferLength);
+  drawTimeData(timeData);
 }
 
 // draw frequency bars
 function drawTimeData(timeData) {
   // inject time data into our timeData array
   analyzer.getByteTimeDomainData(timeData);
-  console.log(timeData);
+  // visualize the data:
+  // 1. clear canvas
+  // 2. canvas setup
+  ctx.lineWidth = 10;
+  ctx.strokeStyle = 'white';
+  ctx.beginPath();
+  const sliceWidth = WIDTH / bufferLength;
+  // 3. call itself as soon as possible
   requestAnimationFrame(() => drawTimeData(timeData));
 }
+
+getAudio();
 
 // draw time bars

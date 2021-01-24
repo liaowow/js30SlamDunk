@@ -124,7 +124,8 @@ const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 canvas.width = WIDTH;
 canvas.height = HEIGHT;
-let analyzer; // get audio
+let analyzer;
+let bufferLength; // get audio
 
 function handleError(err) {
   console.log('You must give access to your mic in order to proceed.');
@@ -140,19 +141,31 @@ async function getAudio() {
   const source = audioCtx.createMediaStreamSource(stream);
   source.connect(analyzer); // how much data should we collect
 
-  analyzer.fftSize = 2 ** 10; // pull the data off the audio
+  analyzer.fftSize = 2 ** 10; // how many pieces of data are there
 
-  const timeData = new Uint8Array(analyzer.frequencyBinCount);
-  const frequencyData = new Uint8Array(analyzer.frequencyBinCount);
+  bufferLength = analyzer.frequencyBinCount; // pull the data off the audio
+
+  const timeData = new Uint8Array(bufferLength);
+  const frequencyData = new Uint8Array(bufferLength);
+  drawTimeData(timeData);
 } // draw frequency bars
 
 
 function drawTimeData(timeData) {
   // inject time data into our timeData array
-  analyzer.getByteTimeDomainData(timeData);
-  console.log(timeData);
+  analyzer.getByteTimeDomainData(timeData); // visualize the data:
+  // 1. clear canvas
+  // 2. canvas setup
+
+  ctx.lineWidth = 10;
+  ctx.strokeStyle = 'white';
+  ctx.beginPath();
+  const sliceWidth = WIDTH / bufferLength; // 3. call itself as soon as possible
+
   requestAnimationFrame(() => drawTimeData(timeData));
-} // draw time bars
+}
+
+getAudio(); // draw time bars
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -181,7 +194,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54803" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61630" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
