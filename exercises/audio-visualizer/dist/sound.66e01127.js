@@ -163,32 +163,7 @@ const ctx = canvas.getContext('2d');
 canvas.width = WIDTH;
 canvas.height = HEIGHT;
 let analyzer;
-let bufferLength; // get audio
-
-function handleError(err) {
-  console.log('You must give access to your mic in order to proceed.');
-}
-
-async function getAudio() {
-  const stream = await navigator.mediaDevices.getUserMedia({
-    audio: true
-  }).catch(handleError);
-  const audioCtx = new AudioContext();
-  analyzer = audioCtx.createAnalyser();
-  audioCtx.createMediaStreamSource(stream);
-  const source = audioCtx.createMediaStreamSource(stream);
-  source.connect(analyzer); // how much data should we collect
-
-  analyzer.fftSize = 2 ** 8; // how many pieces of data are there
-
-  bufferLength = analyzer.frequencyBinCount; // pull the data off the audio
-
-  const timeData = new Uint8Array(bufferLength);
-  const frequencyData = new Uint8Array(bufferLength);
-  drawTimeData(timeData);
-  drawFrequency(frequencyData);
-} // draw time lines
-
+let bufferLength; // draw time lines
 
 function drawTimeData(timeData) {
   // inject time data into our timeData array
@@ -236,6 +211,31 @@ function drawFrequency(frequencyData) {
     x += barWidth + 2;
   });
   requestAnimationFrame(() => drawFrequency(frequencyData));
+} // get audio
+
+
+function handleError(err) {
+  console.log('You must give access to your mic in order to proceed.');
+}
+
+async function getAudio() {
+  const stream = await navigator.mediaDevices.getUserMedia({
+    audio: true
+  }).catch(handleError);
+  const audioCtx = new AudioContext();
+  analyzer = audioCtx.createAnalyser();
+  audioCtx.createMediaStreamSource(stream);
+  const source = audioCtx.createMediaStreamSource(stream);
+  source.connect(analyzer); // how much data should we collect
+
+  analyzer.fftSize = 2 ** 8; // how many pieces of data are there
+
+  bufferLength = analyzer.frequencyBinCount; // pull the data off the audio
+
+  const timeData = new Uint8Array(bufferLength);
+  const frequencyData = new Uint8Array(bufferLength);
+  drawTimeData(timeData);
+  drawFrequency(frequencyData);
 }
 
 getAudio();
@@ -267,7 +267,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65202" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57602" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
